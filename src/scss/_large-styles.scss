@@ -1,0 +1,312 @@
+@import "bootstrap";
+
+.logo {
+    text-align: left;
+    @include rem-fallback(margin-top, 2.5);
+    img {
+        width: 317px;
+        height: 63px;
+    }
+}
+.header {
+    height: 150px;
+}
+
+.canvas-item {
+	height: auto;
+}
+.canvas-nav {  
+
+	background-color: $theme-c-color; 
+	width: auto;
+	position: relative;
+	height: auto;
+	padding-top: 0 !important;
+	margin-right: 0 !important;
+	right:0;
+
+	ul {
+	    li {
+	      
+	      display: inline-block;
+	   }
+	}
+}
+
+
+/* Menu Styles */
+$menu-width-first-level : 390px;
+$menu-width-second-level : $menu-width-first-level;
+$menu-width-third-level : $menu-width-first-level;
+
+ul.multi-menu
+{
+	position: relative;;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li { 
+		position: relative;
+		ul { 
+			li span.arrow {
+    		float: right;
+    		}
+    	}
+    	/* Root nav */
+    	a {
+    		font-size: 16px;
+        font-weight: normal !important;
+    		@include canvas-transition();
+    		padding: 0 23px;
+		    color: #fff;
+		    text-decoration: none;
+        text-rendering: optimizeLegibility;;
+        -webkit-font-smoothing: antialiased;
+		    /* Make the link cover the entire list item-container */
+		    display: block;
+		    line-height:60px;
+
+		    &:hover, &.active { 
+		    	color: #fff; 
+		    	background-color: $theme-g-color;
+		    }
+		    & span.arrow {
+    			@include rem-fallback(margin-left,0.4);
+    			@include rem-fallback(font-size,0.9);
+    			color: $theme-e-color;
+    		}
+		}
+
+	}
+
+    & > li {
+
+    	& > ul {
+			position: absolute;
+			z-index: 1000;
+			top: 60px;
+			left: 0;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			// opacity: 0;
+			//filter: alpha(opacity=0);
+			visibility: hidden;
+			min-width: $menu-width-first-level;
+			> li {
+				display: block;
+				ul li 
+				{
+					a { 
+						background-color: darken($theme-g-color,12%); 
+					}
+					&:first-child a {
+						box-shadow: none;
+					}
+				}
+			}
+		}
+
+		position: relative;
+		float: left;
+		
+		/* All nav items */
+		& li a { 
+		   background-color: $theme-g-color;
+		   //border-bottom: 1px solid darken($theme-g-color,20%);
+		   
+		   @include rem-fallback(font-size,1.0);
+		   &:hover, &.active { 
+		   	background-color: darken($theme-g-color,12%);
+		   	color: lighten($theme-e-color,20%);
+		   }
+		} 
+
+		&:hover > ul
+		{
+		   	//opacity: 1;
+			//filter: alpha(opacity=100);
+			visibility: visible;
+
+			& > li > ul {
+				background-color: darken($theme-g-color,10%);
+				top:0;
+				//opacity: 0;
+				//filter: alpha(opacity=0);
+				visibility: hidden;
+				position: absolute;
+				padding: 0;
+			    margin: 0;
+				left: $menu-width-second-level;
+				width: $menu-width-second-level;
+			}
+
+			& > li:hover > ul {
+				top:0;
+				//opacity: 1;
+				//filter: alpha(opacity=100);
+				visibility: visible;
+			    position: absolute;
+			    width: $menu-width-second-level;
+			    list-style: none;
+			    padding: 0;
+			    margin: 0;
+			    background: black;
+			    > li {
+					display: block;
+				}
+			}
+
+		}
+	}
+
+}
+
+/* Menu animations */
+/*ul.multi-menu ul {
+  will-change: transform, all;
+  @include transition-property(all);
+  @include transition-duration(0.3s);
+  @include transition-timing-function(linear);
+}*/
+
+.icon-home span {
+	display: none
+}
+
+.row {
+	@include rem-fallback(padding-left,1.5rem);
+	@include rem-fallback(padding-right,1.5rem);
+	.row {
+		padding:0;
+	}
+}
+
+.cta {
+    @include rem-fallback(padding-top, 1);
+    @include rem-fallback(padding-bottom, 1);
+    h2 {
+        @include rem-fallback(margin-bottom, 0.5);
+    }
+    h5 {
+    	margin-bottom:0
+    }
+}
+
+.no-touch.css-translate3d {
+    .parallax {
+        /* Evolution login */
+        &.evolution-login {
+            .parallax-bg {
+              height: 1000px;
+              top: -190px;
+              background-image: url('/img/evolution.jpg');
+              background-position: 50% 0;
+              background-repeat: no-repeat;
+              background-size: cover;
+            }
+        }
+        /* Evolution homepage */
+        &.evolution-login-homepage {
+            .parallax-bg {
+              height: 1000px;
+              top: -450px;
+              background-image: url('/img/evolution.jpg');
+              background-position: 50% 0;
+              background-repeat: no-repeat;
+              background-size: cover;
+            }
+        }
+        /* Evolution overlay */
+        &.evolution-overlay {
+            .parallax-bg {
+              height: 700px;
+              top: -560px;
+              background-image: url('/img/evolution-overlay.jpg');
+              background-position: 50% 0;
+              background-repeat: no-repeat;
+              background-size: cover;
+            }
+        }
+        /* Default template */
+        &.news-centre {
+            .parallax-bg {
+              height: 700px;
+              top: -560px;
+              background-image: url('/img/news-centre.jpg');
+              background-position: 50% 0;
+              background-repeat: no-repeat;
+              background-size: cover;
+            }
+        }
+
+        /* Default template */
+        &.default-template {
+            .parallax-bg {
+              height: 700px;
+              top: -560px;
+              background-image: url('/img/news-centre.jpg');
+              background-position: 50% 0;
+              background-repeat: no-repeat;
+              background-size: cover;
+            }
+        }
+    }
+}
+
+.infoBlock {
+    @include rem-fallback(padding, 3);
+}
+.nopaddinglarge {
+	padding:0;
+}
+.fullWidth {
+  //max-width: 1400px;
+  border-bottom: 10px solid $theme-a-color;
+}
+.royalSlider.heroSlider,
+  .royalSlider.heroSlider .rsOverflow {
+    height: 480px !important;
+ }
+.rsMinW {
+	 .rsThumbs {
+  		background: none !important;
+  		position: absolute;
+  		bottom:0;
+  		.rsThumbsContainer {
+  			width: 93.5%;
+  			margin: 0 auto;
+  			.rsThumb {
+  				width: 24.8%;
+  				background: #fff;
+  				background: rgba(255,255,255,0.8);
+  				margin: 0 1px;
+  				box-sizing: border-box;
+  				display: table;
+  				//@include rem-fallback(padding, 1);
+  				&.rsNavSelected {
+  					background-color: $theme-a-color;
+  					border-top:2px solid #fff;
+  					h5 {
+  						color: #fff;
+  						font-weight: normal!important;
+  					}
+  				}
+  				.rsTmb {
+  					display: table-cell;
+  					text-align:center;
+  					vertical-align: middle;
+  					padding:0 !important;
+	  				h5 {
+  						margin:0;
+	  					text-transform: capitalize;;
+	  					letter-spacing: normal;
+	  					
+	  					line-height: auto;
+	  				}
+  				}
+  			}
+  		}
+	}
+}

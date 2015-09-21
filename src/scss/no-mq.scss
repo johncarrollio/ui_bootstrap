@@ -1,0 +1,64 @@
+// Functions bootstrap
+@import "medium-styles", "large-styles";
+
+/* zurb foundation 4 grid column fix for ie8 and below */
+@mixin columnFix($columns: 24){
+    $i: 1;
+    $ie8: 100%;
+    $ie7: 100%;
+    @while $i < $columns + 1 {
+        
+    $colWidth: ($i/$columns)*$ie8;
+    $colWidth7: ($i/$columns)*$ie7;
+        .small-#{$i}{
+            width: $colWidth;
+            *width: $colWidth7;
+        }
+ 
+        .medium-#{$i}  {
+            width: $colWidth;
+            *width: $colWidth7;
+        }
+
+        .large-#{$i}  {
+            width: $colWidth !important;
+            *width: $colWidth7 !important;
+            //$c : $colWidth7 - $column-gutter;
+            //*width: calc(#{$c});
+        }
+      
+        /* thanks to pinder */
+        .large-offset-#{$i} { 
+            margin-left: ($i/$columns)*$ie8;
+            *margin-left: ($i/$columns)*$ie7;
+        }
+        
+        /* allows centering block elements */
+    .centered-#{$i}{
+        margin-left: ($ie8 - $colWidth)/2;
+        *margin-left: ($ie7 - $colWidth7)/2;
+    }
+        $i: $i + 1;
+    }
+
+    .row .row {
+        *margin-left: 0; /* fix ie7 margins */
+    }
+}
+
+.show-for-small, .hide-for-large-up  {
+    display: none !important;
+}
+.show-for-medium-up, .show-for-large-up {
+    display: block !important;
+}
+.small-centered, .medium-centered, .large-centered {
+    margin: 0 auto;
+    width: 100% !important;
+}
+
+ul {
+    list-style: none;
+}
+
+@include columnFix;

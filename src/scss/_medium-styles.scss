@@ -1,0 +1,236 @@
+@import "bootstrap";
+
+.logo {
+    text-align: left;
+}
+
+.evolution-overlay {
+    .steps {
+        .step {
+            @include rem-fallback(margin-bottom, 2);
+        }
+    }
+}
+
+.infobox {
+    @include rem-fallback(padding-top, 1);
+    @include rem-fallback(padding-bottom, 1);
+
+    figure {
+        border-radius: 5px;
+        text-align:left;
+        position: relative;
+        height: 250px;
+        overflow: hidden;
+        img {
+            display: block;
+            border-radius: 5px;
+        }
+    }
+    figcaption {
+        margin:0;
+        position:absolute;
+        vertical-align: middle;
+        //display: table;
+        div {
+            vertical-align: middle;
+            min-height: 250px;
+            width: 100%;
+            @include rem-fallback(padding, 1.5);
+            display:table-cell;
+            p,h3 {
+            	text-shadow: -1px 0px 2px rgba(0, 0, 0, 0.5);
+        	}
+        }
+    	hr {
+    		height:1px;
+    		background-color: white;
+    		@include rem-fallback(margin-top, 1);
+    		@include rem-fallback(margin-bottom, 1);
+    		border:0;
+    	}
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+    .c-button {
+        margin-bottom: 0;
+    }
+}
+
+.no-touch.csstransitions .infobox {
+    figcaption {
+        will-change: transform, opacity, transition;
+        @include transition-property(all);
+        @include transition-duration(0.3s);
+        @include transition-timing-function(ease-in-out);
+        @include rem-fallback(top, 9.2);
+        div {
+            vertical-align: top;
+        }
+        p, .c-button {
+            @include opacity(0);
+            @include canvas-transition();
+        }
+    }
+    hr {
+        will-change: opacity;
+        @include canvas-transition();
+        @include opacity(1);
+    }
+    &.hover {
+        figcaption {
+            top: 0;
+            @include background-opacity(#000, 0.7);
+            will-change: opacity;
+            border-radius: 5px;
+        }
+        p, .c-button {
+            will-change: opacity;
+            @include opacity(1);
+        }
+        hr {
+            will-change: opacity;
+            @include opacity(0);
+        }
+    }
+} 
+
+$evolution-bg : '/img/evolution.jpg';
+$evolution-overlay-bg : '/img/evolution-overlay.jpg';
+$news-centre-bg : '/img/news-centre.jpg';
+
+.parallax {
+  position: relative;
+  overflow: hidden;
+   -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  .parallax-bg {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      left:0;
+      right:0;
+   }
+
+  /* Evolution login */
+  &.evolution-login, &.evolution-login-homepage {
+    min-height: 480px;
+    background: url($evolution-bg) no-repeat center center;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=$evolution-bg , sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src=$evolution-bg , sizingMethod='scale')";
+  }
+
+  /* Evolution overlay */
+  &.evolution-overlay {
+    min-height: 480px;
+    background: url($evolution-overlay-bg) no-repeat center center;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=$evolution-overlay-bg , sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src=$evolution-bg , sizingMethod='scale')";
+  }
+
+  /* News centre */
+  &.news-centre {
+    height: 390px;
+    background: url($news-centre-bg) no-repeat center center;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=$news-centre-bg, sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src=$news-centre-bg, sizingMethod='scale')";
+  }
+
+  /* Template default */
+  &.template-default {
+    height: 250px;
+    background: url($news-centre-bg) no-repeat center center;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=$news-centre-bg, sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src=$news-centre-bg, sizingMethod='scale')";
+  }
+}
+
+.evolution-introduction {
+    overflow: visible;
+    img {
+        margin-bottom: -90px;
+    }
+}
+
+.border-left {
+    border-left: 1px solid #ccc;
+}
+
+ul.social-icons-header  {
+     @include rem-fallback(margin-top, 1.7);
+}
+
+a.social-icon-large {
+    
+    span {
+        display: none;
+    }
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    line-height: 65px;
+    letter-spacing:0;
+    vertical-align: middle;
+    border-radius: 50%;
+    text-align:center;
+    @include rem-fallback(font-size, 1.7);
+
+    &.facebook {
+        background-color: #004899;
+        @include rem-fallback(font-size, 1.8);
+    }
+    &.twitter {
+        background-color: #009de0;
+    }
+    &.linkedin {
+        background-color: #063873;
+    }
+    &.google-plus {
+        background-color: #d81217;
+    }
+    &.youtube {
+        background-color: #ed1c24;
+    }
+}
+
+.contentSlider {
+    .figimage {
+        @include rem-fallback(margin-bottom, 1.8);
+    }
+    dl.project-dl {
+        @include rem-fallback(font-size, 1.0);
+    }
+}
+
+.cta {
+    .c-button-large {
+    	@include rem-fallback(margin-top, 1);
+    }
+}
+
+.rsContentSlider .rsArrowIcn {      
+    background-color: rgba(0,0,0,0.20);
+}
+.infoBlock {
+    @include rem-fallback(padding-top, 3.0);
+    @include rem-fallback(padding-left, 2.0);
+    h2 {
+      @include rem-fallback(font-size, 3.2);
+      @include rem-fallback(line-height, 3.5);
+    }
+}
+/* Full width slider */
+.royalSlider.heroSlider,
+.royalSlider.heroSlider .rsOverflow {
+    height: 500px !important;
+}
+

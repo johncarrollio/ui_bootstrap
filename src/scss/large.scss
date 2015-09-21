@@ -1,0 +1,9 @@
+@import "bootstrap";
+
+/* @media #{$medium} Used to alter styles for screens at least 1280px wide. This is where the grid changes. */
+// only screen and (min-width:"1280px")
+@media #{$medium} { 
+    @import "medium-styles","large-styles";
+}
+
+

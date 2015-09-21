@@ -1,0 +1,48 @@
+@import 'bourbon';
+
+/* Custom Mixins */
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+}
+
+/* Themes */
+$theme-default : #ffffff; /* White */
+$theme-a-color : #ffffff; /* White */
+$theme-b-color : #ffffff; /* White */
+$theme-c-color : #ffffff; /* White */
+$theme-d-color : #ffffff; /* White */
+
+/* Foundation Settings */
+@import "settings";
+
+/* Set foundation grid size */
+$row-width: rem-calc(1000);
+$column-gutter: rem-calc(20);
+$total-columns: 24 ;
+
+/* Behold, here are all the Foundation components. */
+@import 'foundation/components/grid';
+@import 'foundation/components/clearing';
+@import 'foundation/components/visibility'; 
+
+@import "rem";
+/* @import "multimenu"; Include this for complex multilevel navs */
+/* @import "flexnav"; Include this for flexnav navs */
+/* @import "royalslider"; Include this for royalSlider */
+/* @import "animate"; */
+
+.theme-default { color: $theme-default !important; a { color: $theme-default } }
+.theme-a { color: $theme-a-color !important; a { color: $theme-a-color} }
+.theme-b { color: $theme-b-color !important; a { color: $theme-b-color} }
+.theme-c { color: $theme-c-color !important; a { color: $theme-c-color} }
+.theme-d { color: $theme-d-color !important; a { color: $theme-d-color} }
+
+.theme-default-bg { background-color: $theme-default !important}
+.theme-a-bg { background-color: $theme-a-color !important }
+.theme-b-bg { background-color: $theme-b-color !important }
+.theme-c-bg { background-color: $theme-c-color !important }
+.theme-d-bg { background-color: $theme-d-color !important }
+
+
+
