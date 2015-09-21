@@ -1,10 +1,10 @@
 {
-  "name": "Bootstrap",
-  "version": "1.0.0",
+  "name": "ui_bootstrap",
+  "version": "1.0",
   "authors": [
-    "john.carroll30@gmail.com"
+    "john@johncarroll.io"
   ],
-  "description": "Foundation 5 Bootstrap and responsive menu for all projects",
+  "description": "This is a Frontend Development Bootstrap leveraging Gulp + Foundation + Symantec UI",
   "license": "MIT",
   "ignore": [
     "**/.*",
@@ -31,7 +31,6 @@
   },
   "devDependencies": {
     "picturefill": "~2.3.1",
-    "semantic-ui-scss": "https://github.com/BitPiston/semantic-ui-scss.git",
     "Semantic-UI-LESS": "https://github.com/Semantic-Org/Semantic-UI-LESS.git#~2.1.4"
   }
 }
