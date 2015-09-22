@@ -31,6 +31,6 @@
   },
   "devDependencies": {
     "picturefill": "~2.3.1",
-    "Semantic-UI-LESS": "https://github.com/Semantic-Org/Semantic-UI-LESS.git#~2.1.4"
+    "semantic-ui-icon": "~2.1.4"
   }
 }

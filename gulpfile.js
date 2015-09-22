@@ -1,7 +1,6 @@
 'use strict';
 
 var gulp = require('gulp'),
-    postcss  = require('gulp-postcss'),
 	  uglify = require('gulp-uglify'),
 	  connect = require('gulp-connect-php'),
 	  rename = require("gulp-rename"),
@@ -14,7 +13,7 @@ var gulp = require('gulp'),
 	  jshint = require('gulp-jshint'),
     less = require('gulp-less'),
     path = require('path'),
-    autoprefixer = require('autoprefixer'),
+    autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
     stripCssComments = require('gulp-strip-css-comments');
 
@@ -40,7 +39,7 @@ gulp.task('sass', function () {
   /* Compile SASS */
   return gulp.src('src/scss/app.scss')
     .pipe(sass({includePaths: ['bower_components/foundation/scss','node_modules/bourbon-libsass/dist']}))
-    .pipe(sass({outputStyle: 'expanded'})) // nested, expanded, compact, compressed
+    .pipe(sass({outputStyle: 'nested'})) // nested, expanded, compact, compressed
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('dist/css'))
 	.pipe(notify({ message: 'SASS task complete' }))
@@ -51,10 +50,13 @@ gulp.task('less', ['sass'], function () {
   /* Compile LESS */
   return gulp.src('src/less/ui.less')
     .pipe(less({
-      paths: ['bower_components/Semantic-UI-LESS']
+      paths: ['src/Semantic-UI-LESS']
     }))
-    .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
-    .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+    }))
+    .on('error', swallowError)
     .pipe(gulp.dest('dist/css'))
     .pipe(notify({ message: 'LESS UI task complete' }));
 });
@@ -63,13 +65,14 @@ gulp.task('less', ['sass'], function () {
 gulp.task('concat', ['less'], function () { 
  
   /* Concat into dist.css */
-  gulp.src(['dist/css/app.css','dist/css/ui.css'])
+  gulp.src(['dist/css/app.css','dist/css/ui.css','bower_components/semantic-ui-icon/icon.css'])
     .pipe(concat('dist.css'))
     .pipe(stripCssComments({preserve: false}))
     //.pipe(minifycss())
     .on('error', swallowError)
     .pipe(gulp.dest('dist/css'))
-    .pipe(notify({ message: 'CSS distribution task complete' }));
+    .pipe(notify({ message: 'CSS distribution task complete' }))
+    .pipe(modernizr());
 });
 
 /* Modernizr build */
@@ -98,7 +101,7 @@ gulp.task('uglifyfile', function () {
 gulp.task('uglify', function() {
      gulp.src([
 			  	'src/js/*.js', 
-			    'src/js/libraries/*.js', 
+			    'src/js/libraries/*.js',  
 			    'bower_components/fastclick/lib/*.js', 
 			    'bower_components/jquery-2/dist/jquery.js',
 			    'bower_components/jquery-backstretch/jquery.backstretch.js',
@@ -120,6 +123,14 @@ gulp.task('uglify', function() {
     .pipe(uglify())
     .on('error', swallowError)
     .pipe(gulp.dest('dist/js'))
+    
+    /* Minify all Semantic UI supporting JS scripts */
+    gulp.src(['src/Semantic-UI-LESS/definitions/**/*.js'])
+    .pipe(rename({suffix: '.min'}))
+    .pipe(uglify())
+    .on('error', swallowError)
+    .pipe(gulp.dest('dist/js/ui'))
+
 	.pipe(notify({ message: 'Uglify <%= file.relative %>! complete' }));
 });
 
@@ -128,14 +139,13 @@ gulp.task('watch', function () {
    gulp.watch([
     'src/scss/*.scss',
     'src/less/*.less',
-    'bower_components/Semantic-UI-LESS/definitions/**/*.less',
-    'bower_components/Semantic-UI-LESS/theme.config'
-   ], ['concat','modernizr'])
+    'src/Semantic-UI-LESS/site/**/**/*.*',
+    'src/Semantic-UI-LESS/theme.config'
+   ], ['concat'])
    gulp.watch(['src/js/*.js','src/js/libraries/*.js'], ['uglifyfile'])
   .on('error', swallowError)
   .pipe(notify({ message: 'Watch JS/SASS/LESS task complete, Reloading Browser' }));
 });
-
 
 gulp.task('default', [ 'connect-sync', 'uglify','less', 'concat', 'modernizr', 'watch']);
 

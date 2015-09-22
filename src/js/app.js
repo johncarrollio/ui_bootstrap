@@ -15,8 +15,23 @@
       'subnav': 			false           // enable this for 2 level menu 
 	});
 
+	/* UI Accordion */
+	$('.ui.accordion')
+  		.accordion()
+	;
+
+	/* UI Model */
+	$('.order-button').click(function(e){
+		e.preventDefault();
+        $('.ui.basic.modal').modal(
+        'show',
+        {
+		    transition  : 'scale'
+		});
+    });
+
 	/* Homepage slider */
-	$('.royalSlidera').royalSlider({
+	$('.royalSlider').royalSlider({
 	    arrowsNav: true,
 	    loop: false,
 	    usePreloader: true,

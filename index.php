@@ -3,79 +3,80 @@
   <head>
     <?php include('meta.php'); ?>
   </head>
-  <body>
+<body>
 
-
-<div class="ui card">
-  <div class="content">
-    <div class="right floated meta">14h</div>
-    <img class="ui avatar image" src="/images/avatar/large/elliot.jpg"> Elliot
-  </div>
-  <div class="image">
-    <img>
-  </div>
-  <div class="content">
-    <span class="right floated">
-      <i class="heart outline like icon"></i>
-      17 likes
-    </span>
-    <i class="comment icon"></i>
-    3 comments
-  </div>
-  <div class="extra content">
-    <div class="ui large transparent left icon input">
-      <i class="heart outline icon"></i>
-      <input type="text" placeholder="Add Comment...">
+  <!-- Modal -->
+  <div class="row">
+    <div class="small-24 columns">
+      <a href="#" class="order-button ui green basic button">Modal Test</a>
     </div>
   </div>
-</div>
+  <div class="ui basic modal">
+    <div class="row">
+          <i class="close icon right"></i>
 
-<div clas="row">
-      <form class="ui form">
-          <div class="small-24 medium-12 large-12 columns">
-            <div class="field">
-              <label>First Name</label>
-              <input type="text" name="first-name" placeholder="First Name">
-            </div>
-          </div>
-          <div class="small-24 medium-12 large-12 columns">
-            <div class="field">
-              <label>Last Name</label>
-              <input type="text" name="last-name" placeholder="Last Name">
-            </div>
-          </div>
-          <div class="small-24 columns">
-            <div class="field">
-              <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden">
-                <label>I agree to the Terms and Conditions</label>
-              </div>
-            </div>
-          </div>
-        <button class="ui button" type="submit">Submit</button>
-      </form>
-</div>
+          <h3><i class="archive icon"></i> Archive Old Messages</h3>
+          <p>A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
 
-<div class="ui labeled button" tabindex="0">
-  <div class="ui red button">
-    <i class="heart icon"></i> Like
+          <div class="small-6 small-centered columns">
+            <div class="row">
+                <div class="actions">
+                  <div class="two fluid ui inverted buttons">
+                      <div class="small-24 medium-12 large-12 columns">
+                        <div class="ui red basic button">
+                          <i class="remove icon"></i>
+                          No
+                        </div>
+                      </div>
+                      <div class="small-24 medium-12 large-12 columns">
+                        <div class="ui green basic button">
+                          <i class="checkmark icon"></i>
+                          Yes
+                        </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+    </div>
   </div>
-  <a class="ui basic red left pointing label">
-    1,048
-  </a>
-</div>
-<div class="ui labeled button" tabindex="0">
-  <div class="ui basic blue button">
-    <i class="fork icon"></i> Forks
+  <!-- / Modal -->
+
+  <!-- Accordion -->
+  <div class="row">
+    <div class="small-24 columns">
+      <div class="ui accordion">
+        <div class="active title">
+          <i class="dropdown icon"></i>
+          What is a dog?
+        </div>
+        <div class="active content">
+          <p>A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
+        </div>
+        <div class="title">
+          <i class="dropdown icon"></i>
+          What kinds of dogs are there?
+        </div>
+        <div class="content">
+          <p>There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
+        </div>
+        <div class="title">
+          <i class="dropdown icon"></i>
+          How do you acquire a dog?
+        </div>
+        <div class="content">
+          <p>Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
+          <p>A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <a class="ui basic left pointing blue label">
-    1,048
-  </a>
-</div>
+  <!-- / Accordion -->
+
 
     <!-- footer scripts -->
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="dist/css/dist.css" />
+    <link rel="stylesheet" href="bower_components/semantic-ui-icon/icon.min.css" />
     <!--[if lt IE 9]>
     <link rel="stylesheet" href="ie8_fix/ie8.css">
     <script src="ie8_fix/ie8-head.js"></script>

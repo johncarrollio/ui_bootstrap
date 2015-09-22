@@ -22,7 +22,12 @@ requirejs.config({
         lazyloadxt : 'jquery.lazyloadxt.min',
         lazyloadxtvideo : 'jquery.lazyloadxt.extra.min',
         scroll_reveal : 'scrollReveal.min',
-        picturefill : 'picturefill.min'
+        picturefill : 'picturefill.min',
+        /* Semantic UI */
+        ui_accordion : 'ui/modules/accordion.min',
+        ui_dimmer : 'ui/modules/dimmer.min',
+        ui_modal : 'ui/modules/modal.min',
+        ui_transition : 'ui/modules/transition.min'
     },
     /* Add anything with a dependancy in here */
     shim: {
@@ -44,6 +49,10 @@ requirejs.config({
         lazyloadxt : ['jquery'],
         picturefill : ['jquery'],
         lazyloadxtvideo : ['jquery'],
+        ui_dimmer : ['jquery'],
+        ui_accordion : ['jquery'],
+        ui_transition : ['jquery'],
+        ui_modal : ['jquery','ui_dimmer','ui_transition'],
         app: ['jquery',
               'cookie',
               'responsivenav_simple', /* Include this for sliding down not so complex navs */
@@ -60,7 +69,10 @@ requirejs.config({
               'lazyloadxt',
               'lazyloadxtvideo',
               'scroll_reveal',
-              'picturefill'
+              'picturefill',
+              'ui_accordion',
+              'ui_modal',
+              'ui_transition'
         ]
     }
 });
